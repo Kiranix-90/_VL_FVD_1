@@ -1,67 +1,62 @@
-RTL to GDS Flow – CMOS Inverter using Sky130
+# RTL to GDS Flow – CMOS Inverter using Sky130
 
-This project demonstrates a complete RTL to GDS flow for a CMOS inverter using open-source VLSI tools. The objective of this project is to understand the ASIC design flow starting from Verilog RTL design to layout generation, DRC, and extraction.
+This project demonstrates a complete **RTL to GDS flow** for a CMOS inverter using **open-source VLSI tools**. The objective of this project is to understand the ASIC design flow starting from **Verilog RTL design** to **layout generation, DRC, and extraction**.
 
-This work was done as part of my learning in VLSI design, physical design flow, and open-source EDA tools.
+This work was done as part of my learning in **VLSI design, physical design flow, and open-source EDA tools**.
 
-Project Overview
+---
 
-The inverter is designed in Verilog, functionally verified through simulation, synthesized using a standard cell library, and finally verified at the layout level using the Sky130 PDK.
+## Project Overview
 
-The flow implemented:
+The inverter is designed in Verilog, functionally verified through simulation, synthesized using a standard cell library, and finally verified at the layout level using the **Sky130 PDK**.
+
+### Flow Implemented
 
 RTL Design → Simulation → Synthesis → Layout Verification → Extraction
 
-Tools Used
+---
 
-Icarus Verilog – RTL compilation and simulation
+## Tools Used
 
-GTKWave – Waveform viewing and functional verification
+- **Icarus Verilog** – RTL compilation and simulation  
+- **GTKWave** – Waveform viewing and functional verification  
+- **Yosys** – Logic synthesis  
+- **Magic VLSI** – Layout viewing, DRC, and extraction  
+- **Sky130 PDK** – Standard cell library and technology files  
+- **Linux (Ubuntu)** – Development environment  
 
-Yosys – Logic synthesis
+---
 
-Magic VLSI – Layout viewing, DRC, and extraction
+## Design Flow
 
-Sky130 PDK – Standard cell library and technology files
-
-Linux (Ubuntu) – Development environment
-
-Design Flow
-1. RTL Design
+### 1. RTL Design
 
 A CMOS inverter was implemented using Verilog HDL.
 
-Files:
-
-inverter.v
-
-inverter_tb.v
+**Files:**
+- `inverter.v`
+- `inverter_tb.v`
 
 The testbench applies input stimulus and verifies the output behavior.
 
-2. Simulation
+---
+
+### 2. Simulation
 
 RTL simulation was performed using Icarus Verilog:
 
-Compilation:
-
+**Compilation**
+```bash
 iverilog inverter.v inverter_tb.v
-
-
-Execution:
+Execution
 
 vvp a.out
-
-
-Waveform viewing:
+Waveform viewing
 
 gtkwave inverter.vcd
-
-
 The waveform confirms correct inverter operation.
 
 3. Synthesis
-
 Logic synthesis was performed using Yosys with the Sky130 standard cell library.
 
 Steps:
@@ -81,7 +76,6 @@ Synthesized netlist
 Synthesis report
 
 4. Layout and DRC Verification
-
 Layout and verification were performed using Magic VLSI.
 
 Steps:
@@ -94,29 +88,22 @@ Perform DRC check
 
 Fix violations if present
 
-Command used:
+Command used
 
 magic -T sky130A.tech
-
-
 Result:
-
-No DRC errors found
+No DRC errors found.
 
 5. Extraction
-
 Layout extraction was performed to generate SPICE netlist.
 
-Commands used in Magic:
+Commands used in Magic
 
 extract all
 ext2spice lvs
-
-
 This step verifies connectivity and prepares the design for LVS and further verification.
 
 Project Directory Structure
-
 Example structure:
 
 rtl2gds_inverter/
@@ -130,9 +117,7 @@ rtl2gds_inverter/
 ├── inverter.mag
 ├── inverter.gds
 └── reports/
-
 Results
-
 Functional simulation successful
 
 Correct synthesis using Sky130 cells
@@ -144,7 +129,6 @@ DRC passed
 Extraction completed
 
 Learning Outcomes
-
 Through this project, I learned:
 
 Basics of ASIC design flow
@@ -160,7 +144,6 @@ Working with Sky130 PDK
 Open-source RTL to GDS workflow
 
 Future Improvements
-
 Perform LVS verification
 
 Timing analysis
@@ -170,5 +153,4 @@ Design larger combinational circuits
 Implement full digital blocks
 
 Author
-
 Kiran Gorajanal
